@@ -13,10 +13,10 @@ export const Root: RootConfig<RootProps> = {
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
       >
-        <Header editMode={isEditing} />
+        {/* <Header editMode={isEditing} /> */}
         <DropZone zone="default-zone" style={{ flexGrow: 1 }} />
 
-        <Footer>
+        {/* <Footer>
           <Footer.List title="Section">
             <Footer.Link href="#">Label</Footer.Link>
             <Footer.Link href="#">Label</Footer.Link>
@@ -41,7 +41,7 @@ export const Root: RootConfig<RootProps> = {
             <Footer.Link href="#">Label</Footer.Link>
             <Footer.Link href="#">Label</Footer.Link>
           </Footer.List>
-        </Footer>
+        </Footer> */}
       </div>
     );
   },

@@ -49,7 +49,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
                   <Button href={path} newTab variant="secondary">
                     View page
                   </Button>
-                  <HtmlExportButton data={data} metadata={metadata} />
+                  <HtmlExportButton />
                 </div>
 
                 {children}

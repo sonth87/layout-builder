@@ -4,26 +4,25 @@ import { Code, FileJson, Eye } from "lucide-react";
 import { exportToHtml, exportHtmlWithCss } from "../lib/html-export";
 import { CodeModal } from "./CodeModal";
 import { formatHtml, formatCss, formatJson } from "../lib/code-formatter";
+import { useAppStoreApi } from "@/core/store";
 
-interface HtmlExportButtonProps {
-  data: any;
-  metadata?: Record<string, any>;
-}
+interface HtmlExportButtonProps {}
 
-export const HtmlExportButton: React.FC<HtmlExportButtonProps> = ({
-  data,
-  metadata = {},
-}) => {
+export const HtmlExportButton: React.FC<HtmlExportButtonProps> = ({}) => {
   const [isExporting, setIsExporting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJsonModalOpen, setIsJsonModalOpen] = useState(false);
   const [htmlContent, setHtmlContent] = useState("");
   const [cssContent, setCssContent] = useState("");
   const [jsonContent, setJsonContent] = useState("");
+  const appStore = useAppStoreApi();
+  const data = appStore.getState().state.data as any;
+  const metadata = appStore.getState().metadata as any;
 
   const handleViewCode = async () => {
     try {
       setIsExporting(true);
+
       const { html, css } = await exportHtmlWithCss(data, metadata);
 
       // Format the code using prettier

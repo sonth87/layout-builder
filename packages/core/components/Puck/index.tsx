@@ -645,6 +645,7 @@ function PuckLayout<
                                 onClick={() => {
                                   const data = appStore.getState().state
                                     .data as G["UserData"];
+                                    console.log("Publishing data:", data);
                                   onPublish && onPublish(data);
                                 }}
                                 icon={<Globe size="14px" />}
