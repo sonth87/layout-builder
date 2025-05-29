@@ -1,0 +1,102 @@
+import { ConfigPreview } from "@/docs/components/Preview";
+
+# Textarea
+
+Render a `textarea` input. Extends [Base](base).
+
+<ConfigPreview
+  label="Example"
+  componentConfig={{
+    fields: {
+      description: {
+        type: "textarea",
+      },
+    },
+    render: ({ description }) => {
+      return <p>{description}</p>;
+    },
+    defaultProps: { description: "Hello, world" },
+  }}
+/>
+
+```tsx {5-7} copy
+const config = {
+  components: {
+    Example: {
+      fields: {
+        description: {
+          type: "textarea",
+        },
+      },
+      render: ({ description }) => {
+        return <p>{description}</p>;
+      },
+    },
+  },
+};
+```
+
+## Params
+
+| Param                         | Example                         | Type       | Status   |
+| ----------------------------- | ------------------------------- | ---------- | -------- |
+| [`type`](#type)               | `type: "textarea"`              | "textarea" | Required |
+| [`placeholder`](#placeholder) | `placeholder: "Lorem ipsum..."` | String     | -        |
+
+## Required params
+
+### `type`
+
+The type of the field. Must be `"textarea"` for Textarea fields.
+
+```tsx {6} copy
+const config = {
+  components: {
+    Example: {
+      fields: {
+        description: {
+          type: "textarea",
+        },
+      },
+      // ...
+    },
+  },
+};
+```
+
+## Optional params
+
+### Placeholder
+
+The placeholder text to display when the field is empty.
+
+```tsx {7} copy
+const config = {
+  components: {
+    Example: {
+      fields: {
+        description: {
+          type: "textarea",
+          placeholder: "Lorem ipsum...",
+        },
+      },
+      // ...
+    },
+  },
+};
+```
+
+<ConfigPreview
+  label="Example"
+  componentConfig={{
+    fields: {
+      description: {
+        type: "textarea",
+        placeholder: "Lorem ipsum...",
+      },
+    },
+    render: ({ description }) => {
+      return <div>{description}</div>;
+    },
+  }}
+/>

@@ -1,0 +1,59 @@
+# Plugin API
+
+import { Callout } from "nextra/components";
+
+<Callout>
+  The plugin API is highly experimental and is likely to experience breaking
+  changes.
+</Callout>
+
+The plugin API enables developers to distribute plugins to customize the Puck interface.
+
+## Official plugins
+
+- [`emotion-cache`](https://github.com/measuredco/puck/tree/main/packages/plugin-emotion-cache): Inject emotion cache into the Puck iframe.
+- [`heading-analyzer`](https://github.com/measuredco/puck/tree/main/packages/plugin-heading-analyzer): Analyze the heading outline of your page and be warned when you're not respecting WCAG 2 accessibility standards.
+
+Please see the [awesome-puck repo](https://github.com/measuredco/awesome-puck) for a full list of community plugins.
+
+## Developing a plugin
+
+Plugins implement the [`overrides`](/docs/extending-puck/ui-overrides) API:
+
+```tsx showLineNumbers copy {3-9, 15}
+import { Puck } from "@measured/puck";
+
+const MyPlugin = {
+  overrides: {
+    componentItem: ({ name }) => (
+      <div style={{ backgroundColor: "hotpink" }}>{name}</div>
+    ),
+  },
+};
+
+export function Editor() {
+  return (
+    <Puck
+      // ...
+      plugins={[MyPlugin]}
+    />
+  );
+}
+```
+
+## Plugin currying
+
+Plugins are rendered in the order they are defined. Unless otherwise specified, all overrides are _curried_, meaning that the return node of one plugin will be passed as `children` to the next plugin.
+
+This may result in some incompatible plugin combinations. To improve your chance of building a widely compatible plugin, consider:
+
+1. Implementing as few override methods as you need
+2. Always rendering `children` if possible
+
+## Custom fields
+
+Plugins enable full UI overhauls. If you're creating a field for a specific use-case, you might be better off distributing a [custom field](custom-fields).
+
+## Further reading
+
+- [Plugin API reference](/docs/api-reference/plugin)
