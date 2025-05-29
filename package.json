@@ -24,7 +24,7 @@
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "lerna": "^7.1.1",
-    "prettier": "^2.5.1",
+    "prettier": "^3.5.3",
     "puppeteer": "^24.8.2",
     "standard-changelog": "^2.0.21",
     "turbo": "^2.3.3"
